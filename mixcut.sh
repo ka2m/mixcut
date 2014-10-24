@@ -34,8 +34,8 @@ do
     begin=$(echo $line | awk -F',' '{print $1}')
     end=$(echo $line | awk -F',' '{print $2}')
     songName=$(echo $line | awk -F',' '{print $3}')
-    begin_secs=$(( $(echo $begin | awk -F ':' '{print $1}')*60 + $(echo $begin | awk -F ':' '{print $2}') ))
-    length=$(( $(echo $end | awk -F ':' '{print $1}')*60 + $(echo $end | awk -F ':' '{print $2}') - $begin_secs ))
+    begin_secs=$(( $(echo $begin | awk -F ':' '{print $1 + 0}')*60 + $(echo $begin | awk -F ':' '{print $2 + 0}') ))
+    length=$(( $(echo $end | awk -F ':' '{print $1 + 0}')*60 + $(echo $end | awk -F ':' '{print $2 + 0}') - $begin_secs ))
     echo $begin $end $length $songName
     output=${songName}".mp3"
     ffmpeg -ss 00:${begin}.00 -t $length -i $MIXTAPE -ab $BITRATE "${output}" </dev/null 
