@@ -1,7 +1,7 @@
 mixcut
 ======
 
-This is a script, which allows you to split your mixtape (album, merged in one file) back into files. Written in pure Bash.
+This is a script, which allows you to split your mixtape (album, merged in one file) back into files. Written in Bash.
 
 
 ##Dependencies
@@ -12,16 +12,19 @@ This is a script, which allows you to split your mixtape (album, merged in one f
 
 ##Usage
 
- 1. Rename your mixtape to `ARTIST-ALBUM\ NAME.mp3`, otherwise it won't work.
- 2. Create your timeline file formatted like this:
+ 1. Create your timeline file formatted like this:
  	    
  	     00:00,01:56,Track 1
  	     01:57,02:55,Track 2
 
- 3. Save it with any name.
- 4. Run: `mixtape.sh ARTIST-ALBUM\ NAME.mp3  your-timeline-file`
- 5. ffmpeg does its magic.
- 6. Profit. 
+ 2. Save it under any name.
+ 3. Run: `./mixcut -a Artist -m Album\ Name -i album-file.mp3 -t timeline-file`
+ 4. ffmpeg and mp3info do its magic.
+ 5. Profit. 
  	
 
- 
+##Credit
+
+[Vlad Slepukhin](http://fau.im)
+
+No license applied.
