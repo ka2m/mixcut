@@ -41,29 +41,14 @@ printf "mixcut – cut mixtape into separate files using ffmpeg and mp3info by V
     esac
 done
 
-if [[ ! "${ARTIST}" ]]; then
-  echo "No artist defined. Usage: "${EXAMPLE}
+if [[ ! "${ARTIST}" ]] || [[ ! "${ALBUM}" ]] || [[ ! "${MIXTAPE}" ]] || [[ ! "${TIMELINE}" ]] || [[ ! "${MIXTAPE}" == *mp3 ]]; then
+  echo "Can't run due to improper format. Usage: "${EXAMPLE}
   exit 1
 fi
 
-if [[ ! "${ALBUM}" ]]; then
-  echo "No album name defined. Usage: "${EXAMPLE}
+if [ ! -f "${MIXTAPE}" ]; then
+  echo "File not found: "${MIXTAPE}". Exiting. "
   exit 2
-fi
-
-if [[ ! "${MIXTAPE}" ]]; then
-  echo "No input file defined. Usage: "${EXAMPLE}
-  exit 3
-fi
-
-if [[ ! "${TIMELINE}" ]]; then
-  echo "No timeline file defined. Usage: "${EXAMPLE}
-  exit 4
-fi
-
-if [[ ! "${MIXTAPE}" == *mp3 ]]; then
-  echo "Input file doesn't end with .mp3"
-  exit 5
 fi
 
 BITRATE=$(ffmpeg -i "${MIXTAPE}" 2>&1 | grep bitrate: | awk '{print $6}' || true)
