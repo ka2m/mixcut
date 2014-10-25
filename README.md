@@ -8,7 +8,6 @@ This is a script, which allows you to split your mixtape (album, merged in one f
 
 * Bash
 * ffmpeg
-* mp3info
 
 ##Usage
 
@@ -19,7 +18,7 @@ This is a script, which allows you to split your mixtape (album, merged in one f
 
  2. Save it under any name.
  3. Run: `./mixcut -a Artist -m Album\ Name -i album-file.mp3 -t timeline-file`
- 4. ffmpeg and mp3info do its magic.
+ 4. ffmpeg do its magic.
  5. Profit. 
  	
 

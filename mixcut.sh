@@ -71,6 +71,5 @@ do
     length=$(($(echo $end | awk -F ':' '{print $1 + 0}')*60 + $(echo $end | awk -F ':' '{print $2 + 0}') - $beginSecs))
     echo $begin $end $length $songName
     output=${songName}".mp3"
-    ffmpeg -ss 00:${begin}.00 -t $length -i "${MIXTAPE}" -ab ${BITRATE} "${output}" </dev/null
-    mp3info -a ${ARTIST} -l ${ALBUM}  -n $count -t ${songName} "${output}"
+    ffmpeg -ss 00:${begin}.00 -t $length -i "${MIXTAPE}" -ab ${BITRATE} -metadata title="${songName}" -metadata artist="${ARTIST}" -metadata album="${ALBUM}" -metadata track="${count}" "${output}" < /dev/null
 done < ${TIMELINE}
